@@ -1,7 +1,5 @@
 package packGps;
 
-import flecha.Ruta;
-
 public class EstacionDeServicio extends PuntoDeInteres {
 	private TipoDeCombustible tipoDeCombustible;
 	private Marca marca;

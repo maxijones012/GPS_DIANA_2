@@ -1,15 +1,29 @@
 package packGps;
 
-import java.util.ArrayList;
-
-import grafo.Ciudad;
+import com.sun.javafx.collections.MapAdapterChange;
 
 public class Prueba {
-	//private ArrayList<Ruta> listruta;
 
 	public static void main(String[] args) {
-		Mapa mapa = Mapa.getInstancia();
-		mapa.iniciar();
+		
+		iniciar();
+		
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private static void iniciar() {
+		Mapa.getInstancia().iniciar();
+			
+	}
+	
+
 
 }

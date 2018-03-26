@@ -1,6 +1,4 @@
-package grafo;
-
-import packGps.Posicion;
+package packGps;
 
 public class Rotonda extends Punto {
 	public Rotonda(Posicion posicion,String nombre) {

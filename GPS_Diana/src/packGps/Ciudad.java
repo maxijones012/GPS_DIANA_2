@@ -1,6 +1,4 @@
-package grafo;
-
-import packGps.Posicion;
+package packGps;
 
 public class Ciudad extends Punto {
 	

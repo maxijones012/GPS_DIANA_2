@@ -1,6 +1,4 @@
-package flecha;
-
-import grafo.Punto;
+package packGps;
 
 public class RutaEnConstruccion extends RutaPavimentada {
 	private float tiempoEstadar = 0;

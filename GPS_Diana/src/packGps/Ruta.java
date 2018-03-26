@@ -1,9 +1,6 @@
-package flecha;
+package packGps;
 
 import java.util.ArrayList;
-
-import grafo.Punto;
-import packGps.PuntoDeInteres;
 
 public abstract class Ruta extends Camino{
 	private int longitud;

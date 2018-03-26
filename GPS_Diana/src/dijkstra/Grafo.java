@@ -1,4 +1,4 @@
-package PaqueteAux;
+package dijkstra;
 
 import java.util.ArrayList;
 import java.util.Iterator;

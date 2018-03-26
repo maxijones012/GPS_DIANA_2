@@ -1,7 +1,5 @@
 package packGps;
 
-import flecha.Ruta;
-
 public class Alojamiento extends PuntoDeInteres {
 	private int cantidadEstrellas;
 	private String nombre;

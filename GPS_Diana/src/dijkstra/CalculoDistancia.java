@@ -1,8 +1,9 @@
-package PaqueteAux;
+package dijkstra;
 
 import java.util.ArrayList;
 
-import flecha.Ruta;
+import packGps.Mapa;
+import packGps.Ruta;
 
 public class CalculoDistancia {
 
@@ -20,11 +21,12 @@ public class CalculoDistancia {
 		for (int i = 0; i < listaRuta.size(); i++) {
 			Ruta rutaActual = listaRuta.get(i);
 			
+			nodoA.setNombre(rutaActual.getOrigen().getNombre());
+			nodoB.setNombre(rutaActual.getDestino().getNombre());
+			
 			grafo.agregarNodo(nodoA);
 			grafo.agregarNodo(nodoB);
 			
-			nodoA.setNombre(rutaActual.getOrigen().getNombre());
-			nodoB.setNombre(rutaActual.getDestino().getNombre());
 			
 			grafo.agregarCamino(nodoA,nodoB , (int) listaRuta.get(i).getLongitud());
 		}
@@ -37,8 +39,12 @@ public class CalculoDistancia {
 		
 		//ACA VA LA OPCION DEL USUARIO!!
 		grafo.caminoOptimo(nodoA,nodoB); 
-
+		
+//		actualizarColor(Mapa.getInstancia());
+		
+		
 	}
+
 
 	private Nodo buscarEleccionOrigen(ArrayList<Nodo> nodos, String eleccionOrigen) {
 		

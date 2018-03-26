@@ -1,13 +1,13 @@
-package flecha;
+package packGps;
 
 import java.util.ArrayList;
 
 public class Camino {
 	// Encontrar camino optimo
-	// más rapido
-	// más corto
+	// mï¿½s rapido
+	// mï¿½s corto
 
-	// Debería etar en Camino?
+	// Deberï¿½a etar en Camino?
 	
 
 }

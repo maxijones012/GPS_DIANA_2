@@ -1,7 +1,5 @@
 package packGps;
 
-import flecha.Ruta;
-
 public class PuntoDeInteres {
 	private int kilometro;
 	private Ruta ruta;

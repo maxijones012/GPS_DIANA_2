@@ -1,4 +1,4 @@
-package PaqueteAux;
+package dijkstra;
 
 public class Camino {
 	

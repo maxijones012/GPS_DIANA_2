@@ -1,6 +1,4 @@
-package flecha;
-
-import grafo.Punto;
+package packGps;
 
 public class RutaPavimentada extends Ruta {
 

@@ -1,8 +1,6 @@
-package flecha;
+package packGps;
 
 import java.util.Random;
-
-import grafo.Punto;
 
 public class RutaDeRipio extends Ruta {
 	private float porcentajeDisminucionVelocidad = (float) 0.25; // es un rango de 0 a 0.25, revisar!!!
@@ -13,12 +11,18 @@ public class RutaDeRipio extends Ruta {
 
 	}
 
-	public float CalcularVelocidadMaxima(float velocidadMaxima) {
+	public float calcularVelocidadMaxima(float velocidadMaxima) {
 		Random rand = new Random();
 		int val = rand.nextInt(25);
 		velocidadRipio = velocidadMaxima * val;
 		return velocidadRipio;
 
 	}
-
+	
+	@Override
+	public float calcularTiempoRecorrido(float longitud, float velocidadRipio) {
+		// TODO Auto-generated method stub
+		return super.calcularTiempoRecorrido(longitud, velocidadRipio);
+	}
+	
 }

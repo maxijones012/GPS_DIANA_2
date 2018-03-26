@@ -1,9 +1,9 @@
-package PaqueteAux;
+package dijkstra;
 
 import java.util.ArrayList;
 
-import flecha.Ruta;
-import grafo.Punto;
+import packGps.Punto;
+import packGps.Ruta;
 
 public class test {
 
@@ -70,11 +70,12 @@ public class test {
 		for (int i = 0; i < listaRuta.size(); i++) {
 			Ruta rutaActual = listaRuta.get(i);
 			
+			nodoA.setNombre(rutaActual.getOrigen().getNombre());
+			nodoB.setNombre(rutaActual.getDestino().getNombre());
+			
 			grafo.agregarNodo(nodoA);
 			grafo.agregarNodo(nodoB);
 			
-			nodoA.setNombre(rutaActual.getOrigen().getNombre());
-			nodoB.setNombre(rutaActual.getDestino().getNombre());
 			
 			grafo.agregarCamino(nodoA,nodoB , (int) listaRuta.get(i).getLongitud());
 		}

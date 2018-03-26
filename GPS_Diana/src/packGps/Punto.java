@@ -1,12 +1,10 @@
-package grafo;
+package packGps;
 
 import java.util.ArrayList;
 
-import packGps.Posicion;
-
 public abstract class Punto {
 	private Punto puntoAntecesor=null;
-	private Posicion posicion;// Atributos comunes a las SubClases. Son equivalentes semánticamente los
+	private Posicion posicion;// Atributos comunes a las SubClases. Son equivalentes semï¿½nticamente los
 								// atributos posicion ~ ubicacion, tomaaremos posicion.
 	private String nombre;
 	private ArrayList<Punto> listaAdyacentes = new ArrayList<>();
