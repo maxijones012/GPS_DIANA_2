@@ -71,6 +71,8 @@ public class Mapa implements Observador {
 		RutaPavimentada rutaPavimentada2 = new RutaPavimentada(800, 120, esquel, comodoro);
 		this.getListaRuta().add(rutaPavimentada2);
 
+		RutaDeRipio rutaripio3= new RutaDeRipio(380, 100, trelew, comodoro);
+		this.getListaRuta().add(rutaripio3);
 	}
 
 	public ArrayList<Ruta> getListaRuta() {

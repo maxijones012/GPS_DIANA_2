@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextPane;
+
+import dijkstra.CalculoDistancia;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
@@ -28,6 +31,7 @@ public class Vista implements Observable {
 	JRadioButton radioBotonMasCorto = new JRadioButton("Más corto");
 	JRadioButton radioBotonMasRapido = new JRadioButton("Más rápido");
 	private Observador observador;
+	public String eleccionDestino;
 	
 	private static Vista instancia = new Vista();// Usamos Singleton.
 
@@ -172,22 +176,62 @@ public class Vista implements Observable {
 		});
 		panelDeOpciones.add(radioBotonMasCorto);
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBoxOrigen = new JComboBox();
 		// comboBox.setModel(new DefaultComboBoxModel(new String[] {"Trelew"}));
-		comboBox.addItem("Trelew");
-		comboBox.addItem("Comodoro Rivadavia");
-		comboBox.setToolTipText("");
-		comboBox.setBounds(14, 34, 117, 20);
-		panelDeOpciones.add(comboBox);
+		for (int i = 0; i < Mapa.getInstancia().getListaPuntos().size(); i++) {
+			comboBoxOrigen.addItem(Mapa.getInstancia().getListaPuntos().get(i).getNombre());
+			
+		}
+		
+		
+		
+		
+		comboBoxOrigen.setToolTipText("");
+		comboBoxOrigen.setBounds(14, 34, 117, 20);
+		panelDeOpciones.add(comboBoxOrigen);
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(14, 103, 109, 20);
-		panelDeOpciones.add(comboBox_1);
+		JComboBox comboBoxDestino = new JComboBox();
+		comboBoxDestino.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				Vista.getInstancia().eleccionDestino=comboBoxDestino.getSelectedItem().toString();
+				System.out.println("comboboxDestino, "+ comboBoxDestino.getSelectedItem().toString());
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+	
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		for (int i = 0; i < Mapa.getInstancia().getListaPuntos().size(); i++) {
+			comboBoxDestino.addItem(Mapa.getInstancia().getListaPuntos().get(i).getNombre());
+			
+		}
+		
+		comboBoxDestino.setBounds(14, 103, 109, 20);
+		panelDeOpciones.add(comboBoxDestino);
 
 		JPanel panelDibujo = new JPanel();
-		panelDibujo.paintComponents(panelDibujo.getGraphics());
-		panelDibujo.setToolTipText("");
-		panelDibujo.setForeground(Color.RED);
 		panelDibujo.setBounds(180, 11, 800, 600);
 		frmGpsDiana.getContentPane().add(panelDibujo);
 
@@ -235,6 +279,9 @@ public class Vista implements Observable {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				CalculoDistancia calculoDistancia = new CalculoDistancia();
+				ArrayList<Ruta> listaRuta=Mapa.getInstancia().getListaRuta();
+//				calculoDistancia.CalcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
 				System.out.println(
 						"Busco, hago el grueso del batallón: la parte lógica, y arrojo el resultado, incluso en la GUI");
 			}

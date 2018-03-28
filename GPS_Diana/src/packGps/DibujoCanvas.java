@@ -71,6 +71,7 @@ public class DibujoCanvas extends Canvas implements packGps.Observable {
 
 	@Override
 	public void paint(Graphics g) {
+		g.setColor(this.getBackground().red);
 		dibujarFondo(g);
 
 		dibujarElementos(g);
@@ -78,22 +79,36 @@ public class DibujoCanvas extends Canvas implements packGps.Observable {
 	}
 
 	private void dibujarElementos(Graphics g) {
-		 this.getGraphics().drawLine(0, 0, 200, 200);
+		dibujarPunto(g);
+		dibujarRuta(g);
+	}
+
+	private void dibujarPunto(Graphics g) {
 		for (int i = 0; i < Mapa.getInstancia().getListaPuntos().size(); i++) {
 			int latitud = (int) Mapa.getInstancia().getListaPuntos().get(i).getPosicion().getLatitud();
 			int longitud = (int) Mapa.getInstancia().getListaPuntos().get(i).getPosicion().getLongitud();
 			String nombrePunto = Mapa.getInstancia().getListaPuntos().get(i).getNombre();
-			this.getBackground();
 			//TODO DIBUJAR STRING (.drawSgtring)
-			g.setColor(Color.black);
-			this.getGraphics().drawOval(latitud, longitud, 5, 5);
+			this.getGraphics().setColor(Color.red);
+			this.getGraphics().drawOval(latitud-10, longitud-10, 25, 25);
 			this.getGraphics().drawString(nombrePunto, (latitud-20), longitud-5);
 		}
 	}
 
-//	public Dimension getPreferredSize() {
-//		return new Dimension(300, 800);
-//	}
+	private void dibujarRuta(Graphics g) {
+		for (int i= 0; i< Mapa.getInstancia().getListaRuta().size(); i++) {
+			Punto origen=Mapa.getInstancia().getListaRuta().get(i).getOrigen();
+			Punto destino=Mapa.getInstancia().getListaRuta().get(i).getDestino();
+			
+			int x1=(int) origen.getPosicion().getLatitud();
+			int y1=		(int) origen.getPosicion().getLongitud();
+			int x2=(int) destino.getPosicion().getLatitud();
+			int y2=(int) destino.getPosicion().getLongitud();
+			this.getGraphics().drawLine(x1,y1 ,x2 ,y2);
+		}
+	}
+
+
 
 	public void actualizar() {
 		paint(this.getGraphics());
@@ -139,15 +154,10 @@ public class DibujoCanvas extends Canvas implements packGps.Observable {
 	public static BufferedImage cambiarTamanio(BufferedImage img, int ancho, int alto) {
 
 		BufferedImage newImage = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_RGB); // esto
-																								// agrega
-																								// el
-																								// fondo
-																								// en
-																								// los
-																								// elementos
+																								// agrega																						// elementos
 
 		Graphics2D g = newImage.createGraphics();
-//		g.setPaint(Color.red);
+		// g.setPaint(Color.red);
 		g.drawImage(img, 0, 0, ancho, alto, null);
 		return newImage;
 	}
