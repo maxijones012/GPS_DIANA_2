@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.scene.control.DialogPane;
 import packGps.*;
 
 public class DibujoCanvas extends Canvas implements packGps.Observable {
@@ -85,12 +82,12 @@ public class DibujoCanvas extends Canvas implements packGps.Observable {
 		for (int i = 0; i < Mapa.getInstancia().getListaPuntos().size(); i++) {
 			int latitud = (int) Mapa.getInstancia().getListaPuntos().get(i).getPosicion().getLatitud();
 			int longitud = (int) Mapa.getInstancia().getListaPuntos().get(i).getPosicion().getLongitud();
-
+			String nombrePunto = Mapa.getInstancia().getListaPuntos().get(i).getNombre();
 			this.getBackground();
 			//TODO DIBUJAR STRING (.drawSgtring)
 			g.setColor(Color.black);
 			this.getGraphics().drawOval(latitud, longitud, 5, 5);
-			
+			this.getGraphics().drawString(nombrePunto, (latitud-20), longitud-5);
 		}
 	}
 
