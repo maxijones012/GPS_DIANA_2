@@ -14,15 +14,15 @@ import javax.swing.JComboBox;
 class MiItemListenerDestino implements ItemListener {  //seria como la INTERFAZ OBSERVADOR, y el observador tiene el metodo actualizar();
 	JComboBox comboAux;
 
-	MiItemListenerDestino(JComboBox comboBoxOrigen) {
+	MiItemListenerDestino(JComboBox comboBoxDestino) {
 		// Guardamos una referencia al objeto Choice
-		comboAux = comboBoxOrigen;
+		comboAux = comboBoxDestino;
 	}
 
 	// Sobreescribimos el metodo itemStateChanged() del interfaz del
 	// ItemListener
 	public void itemStateChanged(ItemEvent evt) { //actualizar();
-		
+		System.out.println(comboAux.getSelectedItem().toString());
 		Vista.getInstancia().setEleccionDestino(comboAux.getSelectedItem().toString());
 	}
 }

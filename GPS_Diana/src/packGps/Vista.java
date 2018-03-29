@@ -134,7 +134,7 @@ public class Vista implements Observable {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("Limpio pantalla.");
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
 			}
 		});
@@ -252,10 +252,9 @@ public class Vista implements Observable {
 				ArrayList<Ruta> listaRuta=Mapa.getInstancia().getListaRuta();
 //				calculoDistancia.CalcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
 				String eleccionOrigen=Vista.getInstancia().getEleccionOrigen();
+				System.out.println("origen: "+ eleccionOrigen +"destino: "+ eleccionDestino );
 				String eleccionDestino=Vista.getInstancia().getEleccionDestino();
 				calculoDistancia.calcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
-				System.out.println(
-						"Busco, hago el grueso del batallón: la parte lógica, y arrojo el resultado, incluso en la GUI");
 			}
 		});
 	}

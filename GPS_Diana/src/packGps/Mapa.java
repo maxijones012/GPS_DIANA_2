@@ -79,8 +79,8 @@ public class Mapa implements Observador {
 		
 		RutaEnConstruccion rutaConst1= new RutaEnConstruccion(200, 70, rioMayo, comodoro);
 		this.getListaRuta().add(rutaConst1);
-		
-		
+		 RutaPavimentada rutaPavimentada3= new RutaPavimentada(600, 110, rioMayo ,esquel );
+		this.getListaRuta().add(rutaPavimentada3);
 	}
 
 	public ArrayList<Ruta> getListaRuta() {

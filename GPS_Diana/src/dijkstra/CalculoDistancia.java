@@ -14,10 +14,8 @@ public class CalculoDistancia {
  */
 	public void calcularCamino(ArrayList<Ruta> listaRuta, String eleccionOrigen, String eleccionDestino){
 		Nodo nodoA = new Nodo();
-		nodoA.setNombre(" SOY NODO A");
 				
 		Nodo nodoB = new Nodo();
-		nodoB.setNombre(" SOY NODO B");
 		
 		Grafo grafo = new Grafo();
 		
@@ -41,6 +39,7 @@ public class CalculoDistancia {
 		
 		
 		nodoA = buscarEleccionOrigen(grafo.getNodos(), eleccionOrigen);
+		nodoB = buscarEleccionOrigen(grafo.getNodos(), eleccionDestino);
 		
 		//ACA VA LA OPCION DEL USUARIO!!
 		grafo.caminoOptimo(nodoA,nodoB); 
@@ -50,7 +49,12 @@ public class CalculoDistancia {
 		
 	}
 
-
+	/**
+	 * Busco si el nodo es igual al nombre de eleccion Origen
+	 * @param nodos
+	 * @param eleccionOrigen
+	 * @return
+	 */
 	private Nodo buscarEleccionOrigen(ArrayList<Nodo> nodos, String eleccionOrigen) {
 		
 		Nodo aux = null;
