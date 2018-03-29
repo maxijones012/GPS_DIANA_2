@@ -11,6 +11,14 @@ public abstract class Ruta extends Camino{
 	private Punto destino;
 
 	// Constructores
+	/**
+	 * Es el Constructor de Ruta que recibe un {@link Punto punto}  de origen y un
+	 * punto de destino y una velocidad maxima de l ruta.
+	 * @param longitud
+	 * @param velocidadMaxima
+	 * @param origen
+	 * @param destino
+	 */
 	public Ruta(int longitud, float velocidadMaxima, Punto origen, Punto destino) {
 		this.origen = origen;
 		this.destino = destino;

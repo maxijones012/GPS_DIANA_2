@@ -57,8 +57,11 @@ public class Mapa implements Observador {
 		Ciudad trelew = new Ciudad(new Posicion(450, 200), "Trelew");
 		this.getListaPuntos().add(trelew);
 
-		Ciudad comodoro = new Ciudad(new Posicion(400, 400), "Comodoro");
+		Ciudad comodoro = new Ciudad(new Posicion(550, 400), "Comodoro");
 		this.getListaPuntos().add(comodoro);
+		
+		Ciudad rioMayo = new Ciudad(new Posicion(350,430), "Rio Mayo");
+		this.getListaPuntos().add(rioMayo);
 
 		// --------------------------------------------------------
 
@@ -73,6 +76,11 @@ public class Mapa implements Observador {
 
 		RutaDeRipio rutaripio3= new RutaDeRipio(380, 100, trelew, comodoro);
 		this.getListaRuta().add(rutaripio3);
+		
+		RutaEnConstruccion rutaConst1= new RutaEnConstruccion(200, 70, rioMayo, comodoro);
+		this.getListaRuta().add(rutaConst1);
+		
+		
 	}
 
 	public ArrayList<Ruta> getListaRuta() {

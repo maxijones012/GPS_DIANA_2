@@ -6,8 +6,13 @@ import packGps.Mapa;
 import packGps.Ruta;
 
 public class CalculoDistancia {
-
-	public void CalcularCamino(ArrayList<Ruta> listaRuta, String eleccionOrigen, String eleccionDestino){
+/**
+ * Obtiene el camino óptimo utilizando la lista de rutas, según las elecciones de origen y destino del usuario.
+ * @param listaRuta
+ * @param eleccionOrigen
+ * @param eleccionDestino
+ */
+	public void calcularCamino(ArrayList<Ruta> listaRuta, String eleccionOrigen, String eleccionDestino){
 		Nodo nodoA = new Nodo();
 		nodoA.setNombre(" SOY NODO A");
 				

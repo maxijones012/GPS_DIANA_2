@@ -31,8 +31,9 @@ public class Vista implements Observable {
 	JRadioButton radioBotonMasCorto = new JRadioButton("Más corto");
 	JRadioButton radioBotonMasRapido = new JRadioButton("Más rápido");
 	private Observador observador;
-	public String eleccionDestino;
-	
+	private String eleccionDestino;
+	private String eleccionOrigen;
+
 	private static Vista instancia = new Vista();// Usamos Singleton.
 
 	/**
@@ -47,19 +48,19 @@ public class Vista implements Observable {
 	 * 
 	 * @wbp.parser.entryPoint
 	 */
-	private void crearVentana() {//Private para que no se generen más ventanas.
+	private void crearVentana() {// Private para que no se generen más ventanas.
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Vista window = Vista.getInstancia();// Llamo al
-																// metodo
-																// getInstancia
-																// del Patron
-																// Singleton.//Llamo
-																// al metodo
-																// getInstancia
-																// del Patron
-																// Singleton.
+														// metodo
+														// getInstancia
+														// del Patron
+														// Singleton.//Llamo
+														// al metodo
+														// getInstancia
+														// del Patron
+														// Singleton.
 					window.frmGpsDiana.setVisible(true);
 					window.frmGpsDiana.setSize(1000, 700);
 				} catch (Exception e) {
@@ -79,6 +80,7 @@ public class Vista implements Observable {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
 	 * @wbp.parser.entryPoint
 	 */
 	private void initializar() {
@@ -87,7 +89,7 @@ public class Vista implements Observable {
 		frmGpsDiana.setBounds(0, 0, 663, 424);
 		frmGpsDiana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmGpsDiana.getContentPane().setLayout(null);
-//		frmGpsDiana.setVisible(true);
+		// frmGpsDiana.setVisible(true);
 
 		JPanel panelDeOpciones = agregarPanelOpciones();
 
@@ -180,54 +182,21 @@ public class Vista implements Observable {
 		// comboBox.setModel(new DefaultComboBoxModel(new String[] {"Trelew"}));
 		for (int i = 0; i < Mapa.getInstancia().getListaPuntos().size(); i++) {
 			comboBoxOrigen.addItem(Mapa.getInstancia().getListaPuntos().get(i).getNombre());
-			
 		}
-		
-		
-		
-		
+		comboBoxOrigen.addItemListener(new MiItemListenerOrigen(comboBoxOrigen));
+
 		comboBoxOrigen.setToolTipText("");
 		comboBoxOrigen.setBounds(14, 34, 117, 20);
 		panelDeOpciones.add(comboBoxOrigen);
 
+		// --------------------------------------------------------------------------
 		JComboBox comboBoxDestino = new JComboBox();
-		comboBoxDestino.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				Vista.getInstancia().eleccionDestino=comboBoxDestino.getSelectedItem().toString();
-				System.out.println("comboboxDestino, "+ comboBoxDestino.getSelectedItem().toString());
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-	
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+
 		for (int i = 0; i < Mapa.getInstancia().getListaPuntos().size(); i++) {
 			comboBoxDestino.addItem(Mapa.getInstancia().getListaPuntos().get(i).getNombre());
-			
+
 		}
-		
+		comboBoxDestino.addItemListener(new MiItemListenerDestino(comboBoxDestino));
 		comboBoxDestino.setBounds(14, 103, 109, 20);
 		panelDeOpciones.add(comboBoxDestino);
 
@@ -282,6 +251,9 @@ public class Vista implements Observable {
 				CalculoDistancia calculoDistancia = new CalculoDistancia();
 				ArrayList<Ruta> listaRuta=Mapa.getInstancia().getListaRuta();
 //				calculoDistancia.CalcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
+				String eleccionOrigen=Vista.getInstancia().getEleccionOrigen();
+				String eleccionDestino=Vista.getInstancia().getEleccionDestino();
+				calculoDistancia.calcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
 				System.out.println(
 						"Busco, hago el grueso del batallón: la parte lógica, y arrojo el resultado, incluso en la GUI");
 			}
@@ -299,17 +271,33 @@ public class Vista implements Observable {
 
 	@Override
 	public void addObservador(Observador obs) {
-		this.observador=obs;
+		this.observador = obs;
 	}
 
 	@Override
 	public void removerObservador(Observador obs) {
-		this.observador=null;
+		this.observador = null;
 	}
 
 	@Override
 	public void notificar() {
 		this.observador.actualizar();
 
+	}
+
+	public String getEleccionDestino() {
+		return eleccionDestino;
+	}
+
+	public void setEleccionDestino(String eleccionDestino) {
+		this.eleccionDestino = eleccionDestino;
+	}
+
+	public String getEleccionOrigen() {
+		return eleccionOrigen;
+	}
+
+	public void setEleccionOrigen(String eleccionOrigen) {
+		this.eleccionOrigen = eleccionOrigen;
 	}
 }

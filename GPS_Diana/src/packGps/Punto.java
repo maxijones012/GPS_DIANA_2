@@ -1,8 +1,13 @@
 package packGps;
 
 import java.util.ArrayList;
-
+/**
+ * Clase abstracta Punto
+ * @author diii2
+ *
+ */
 public abstract class Punto {
+	
 	private Punto puntoAntecesor=null;
 	private Posicion posicion;// Atributos comunes a las SubClases. Son equivalentes sem�nticamente los
 								// atributos posicion ~ ubicacion, tomaaremos posicion.
