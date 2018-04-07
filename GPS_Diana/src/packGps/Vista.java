@@ -25,6 +25,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+/**
+ * Contiene todos los elementos de la parte gráfica.
+ * 
+ * @author Diana Espinoza.
+ *
+ */
 public class Vista implements Observable {
 
 	JFrame frmGpsDiana;
@@ -37,7 +43,8 @@ public class Vista implements Observable {
 	private static Vista instancia = new Vista();// Usamos Singleton.
 
 	/**
-	 * @wbp.parser.entryPoint
+	 * Devuelve una única instancia de la clase {@link Vista Vista}
+	 * @return instancia
 	 */
 	public static Vista getInstancia() {// Metodo delpatron singleton.
 		return instancia;
@@ -46,7 +53,6 @@ public class Vista implements Observable {
 	/**
 	 * Launch the application.
 	 * 
-	 * @wbp.parser.entryPoint
 	 */
 	private void crearVentana() {// Private para que no se generen más ventanas.
 		EventQueue.invokeLater(new Runnable() {
@@ -71,7 +77,7 @@ public class Vista implements Observable {
 	}
 
 	/**
-	 * Create the application.
+	 * Constructor de la clase Vista.
 	 * 
 	 */
 	private Vista() {
@@ -79,9 +85,7 @@ public class Vista implements Observable {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @wbp.parser.entryPoint
+	 * Método que crea el frame con sus componentes.
 	 */
 	private void initializar() {
 		frmGpsDiana = new JFrame();
@@ -208,14 +212,22 @@ public class Vista implements Observable {
 		crearVentana();
 	}
 
+	/**
+	 * Agrega el texto: "Punto Origen" al panel de opciones. 
+	 * @param panelDeOpciones
+	 */
 	private void agregarOrigen(JPanel panelDeOpciones) {
 		JTextPane txtpnPuntoSalida = new JTextPane();
 		txtpnPuntoSalida.setBounds(14, 5, 92, 20);
-		txtpnPuntoSalida.setText("Punto Salida");
+		txtpnPuntoSalida.setText("Punto Origen");
 		txtpnPuntoSalida.setEditable(false);
 		panelDeOpciones.add(txtpnPuntoSalida);
 	}
 
+	/**
+	 * Agrega el boton Buscar al panel.
+	 * @param panelDeOpciones
+	 */
 	private void agregarBotonBuscar(JPanel panelDeOpciones) {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(41, 287, 65, 23);
@@ -249,16 +261,20 @@ public class Vista implements Observable {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CalculoDistancia calculoDistancia = new CalculoDistancia();
-				ArrayList<Ruta> listaRuta=Mapa.getInstancia().getListaRuta();
-//				calculoDistancia.CalcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
-				String eleccionOrigen=Vista.getInstancia().getEleccionOrigen();
-				System.out.println("origen: "+ eleccionOrigen +"destino: "+ eleccionDestino );
-				String eleccionDestino=Vista.getInstancia().getEleccionDestino();
+				ArrayList<Ruta> listaRuta = Mapa.getInstancia().getListaRuta();
+				// calculoDistancia.CalcularCamino(listaRuta, eleccionOrigen,
+				// eleccionDestino);
+				String eleccionOrigen = Vista.getInstancia().getEleccionOrigen();
+				String eleccionDestino = Vista.getInstancia().getEleccionDestino();
+				System.out.println("origen: " + eleccionOrigen + " destino: " + eleccionDestino);
 				calculoDistancia.calcularCamino(listaRuta, eleccionOrigen, eleccionDestino);
 			}
 		});
 	}
-
+/**
+ * Agrega el Panel de opciones al frame.
+ * @return panelDeOpciones
+ */
 	private JPanel agregarPanelOpciones() {
 		JPanel panelDeOpciones = new JPanel();
 		panelDeOpciones.setToolTipText("");
@@ -284,18 +300,34 @@ public class Vista implements Observable {
 
 	}
 
+	/**
+	 * Devuelve la elección de destino.
+	 * @return eleccionDestino
+	 */
 	public String getEleccionDestino() {
 		return eleccionDestino;
 	}
 
+	/**
+	 * Setea la eleccción de destino.
+	 * @param eleccionDestino
+	 */
 	public void setEleccionDestino(String eleccionDestino) {
 		this.eleccionDestino = eleccionDestino;
 	}
 
+	/**
+	 * Devuelve la elección de origen.
+	 * @return eleccionOrigen.
+	 */
 	public String getEleccionOrigen() {
 		return eleccionOrigen;
 	}
 
+	/**
+	 * Setea la elección de origen.
+	 * @param eleccionOrigen
+	 */
 	public void setEleccionOrigen(String eleccionOrigen) {
 		this.eleccionOrigen = eleccionOrigen;
 	}

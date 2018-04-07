@@ -22,7 +22,7 @@ class MiItemListenerDestino implements ItemListener {  //seria como la INTERFAZ 
 	// Sobreescribimos el metodo itemStateChanged() del interfaz del
 	// ItemListener
 	public void itemStateChanged(ItemEvent evt) { //actualizar();
-		System.out.println(comboAux.getSelectedItem().toString());
+		//System.out.println(comboAux.getSelectedItem().toString()); Lo comenté p q no salga dos veces x consola.
 		Vista.getInstancia().setEleccionDestino(comboAux.getSelectedItem().toString());
 	}
 }

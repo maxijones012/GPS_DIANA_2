@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 
 //Clase para recibir los eventos ItemListener generados por el objeto
 //Choice de la aplicación
+
 class MiItemListenerOrigen implements ItemListener {  //seria como la INTERFAZ OBSERVADOR, y el observador tiene el metodo actualizar();
 	JComboBox comboAux;
 

@@ -35,17 +35,13 @@ public class Mapa implements Observador {
 
 	}
 
-	private void dibujarPuntos() {
-
-	}
-
-	@Override
+	@Override // TODO VERIFICAR ESTO
 	public void actualizar() {
-		// TODO cUANDO PRESIONE E BOTÓN bUSCAR deberia hacer los calculos d cual
-		// es el camino optimo y su dibujo.
-
 	}
 
+	/**
+	 * Crea puntos y rutas y los agrega a la lista.
+	 */
 	private void crearElementos() {
 
 		Rotonda rotonda1 = new Rotonda(new Posicion(400, 120), "5 de octubre");
@@ -59,8 +55,8 @@ public class Mapa implements Observador {
 
 		Ciudad comodoro = new Ciudad(new Posicion(550, 400), "Comodoro");
 		this.getListaPuntos().add(comodoro);
-		
-		Ciudad rioMayo = new Ciudad(new Posicion(350,430), "Rio Mayo");
+
+		Ciudad rioMayo = new Ciudad(new Posicion(350, 430), "Rio Mayo");
 		this.getListaPuntos().add(rioMayo);
 
 		// --------------------------------------------------------
@@ -74,27 +70,45 @@ public class Mapa implements Observador {
 		RutaPavimentada rutaPavimentada2 = new RutaPavimentada(800, 120, esquel, comodoro);
 		this.getListaRuta().add(rutaPavimentada2);
 
-		RutaDeRipio rutaripio3= new RutaDeRipio(380, 100, trelew, comodoro);
+		RutaDeRipio rutaripio3 = new RutaDeRipio(380, 100, trelew, comodoro);
 		this.getListaRuta().add(rutaripio3);
-		
-		RutaEnConstruccion rutaConst1= new RutaEnConstruccion(200, 70, rioMayo, comodoro);
+
+		RutaEnConstruccion rutaConst1 = new RutaEnConstruccion(200, 70, rioMayo, comodoro);
 		this.getListaRuta().add(rutaConst1);
-		 RutaPavimentada rutaPavimentada3= new RutaPavimentada(600, 110, rioMayo ,esquel );
+
+		RutaPavimentada rutaPavimentada3 = new RutaPavimentada(600, 110, rioMayo, esquel);
 		this.getListaRuta().add(rutaPavimentada3);
 	}
 
+	/**
+	 * Devuelve la lista de rutas.
+	 * 
+	 * @return listaRuta.
+	 */
 	public ArrayList<Ruta> getListaRuta() {
 		return listaRuta;
 	}
 
+	/**
+	 * Setea listaRuta.
+	 */
 	public void setListaRuta(ArrayList<Ruta> listaRuta) {
 		this.listaRuta = listaRuta;
 	}
 
+	/**
+	 * Devuelve la lista de puntos.
+	 * 
+	 * @return listaPuntos
+	 */
 	public ArrayList<Punto> getListaPuntos() {
 		return listaPuntos;
 	}
 
+	/**
+	 * Setea listaPuntos
+	 * @param listaPuntos
+	 */
 	public void setListaPuntos(ArrayList<Punto> listaPuntos) {
 		this.listaPuntos = listaPuntos;
 	}

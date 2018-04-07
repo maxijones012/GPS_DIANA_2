@@ -39,7 +39,11 @@ public class CalculoDistancia {
 		
 		
 		nodoA = buscarEleccionOrigen(grafo.getNodos(), eleccionOrigen);
+		
+		System.out.println("nodoA: "+nodoA.getNombre());
 		nodoB = buscarEleccionOrigen(grafo.getNodos(), eleccionDestino);
+		System.out.println("nodoB: "+nodoB.getNombre());
+		
 		
 		//ACA VA LA OPCION DEL USUARIO!!
 		grafo.caminoOptimo(nodoA,nodoB); 
@@ -54,12 +58,15 @@ public class CalculoDistancia {
 	 * @param nodos
 	 * @param eleccionOrigen
 	 * @return
+	 * 
+	 * TODO VERIFICACR ESTO
 	 */
 	private Nodo buscarEleccionOrigen(ArrayList<Nodo> nodos, String eleccionOrigen) {
 		
 		Nodo aux = null;
 		for (int i = 0; i < nodos.size(); i++) {
-			if (nodos.get(i).getNombre()==eleccionOrigen){
+			Nodo nodoActual=nodos.get(i);
+			if (nodoActual.getNombre()==eleccionOrigen){
 				aux = nodos.get(i);
 			}
 		}

@@ -24,14 +24,16 @@ public class DibujoCanvas extends Canvas implements packGps.Observable {
 	public static DibujoCanvas instancia = new DibujoCanvas();
 
 	/**
-	 * patron Singleton
-	 * 
-	 * @return
+	 * Devuelve la única instancia de DibujoCanvas
+	 * @return instancia.
 	 */
 	public static DibujoCanvas getInstancia() {
 		return instancia;
 	}
 
+	/**
+	 * Contructor de DibujoCanvas.
+	 */
 	private DibujoCanvas() {
 
 		this.setVisible(true);
@@ -68,7 +70,10 @@ public class DibujoCanvas extends Canvas implements packGps.Observable {
 
 		});
 	}
-
+	
+    /**
+     *  
+     */
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(this.getBackground().red);
